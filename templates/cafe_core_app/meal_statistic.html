@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+
+{% load static %} }}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/style_for_meal_statistic.css' %}">
+{% endblock %}
+
+{% block tittle %}
+    {{ meal.name }}
+
+{% endblock %}
+
+{% block content %}
+
+    {% if meal %}
+        <p><b>Блюдо: </b> {{ meal.name }}</p>
+        <p><b>Описание: </b> {{ meal.description }}</p>
+        <p><b>Цена: </b> {{ meal.price }} BYN</p>
+        <p><b>Размер: </b> {{ meal.size }} г.</p>
+        <p><b>Кол-во кликов: </b> {{ meal_clicks }}</p>
+
+        <div class="container">
+            {{ fig | safe }}
+
+        </div>
+
+
+    {% else %}
+        Блюдо пустое :(
+    {% endif %}
+    <div class="my_container">
+
+        <form action="" method="post" name="select_period" >
+            {% csrf_token %}
+            <label>
+                <select name="format">
+                    <option value="hour" name="period">hour</option>
+                    <option value="day" name="period">day</option>
+                    <option value="month" name="period">month</option>
+                    <option value="year" name="period">year</option>
+                </select>
+            </label>
+            <input type="submit" value="Показать">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block tittle %}
+    Statistics for meals
+{% endblock %}
+
+{% block content %}
+
+    {% for k, meal in meals.items%}
+        <p>{{ k }}- Блюдо: {{ meal.name }}, количество кликов - {{ meal.mealclick_set.count }} </p>
+    {% endfor %}
+
+{% endblock %}

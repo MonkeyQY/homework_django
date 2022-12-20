@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block tittle %} {{ meal_category }} {% endblock %}
+
+{% block content %}
+    {% if meals %}
+        {% for meal in meals %}
+            <h2>
+                <a
+                        href="{% url 'menu:meal' meal.id %}">{{ meal.name }}
+                </a>
+                <a
+                        href="{% url 'menu:statistic_for_meal' meal.id %}">Statistic for {{ meal.name }}
+                </a>
+            </h2>
+        {% endfor %}
+    {% else %}
+        Пусто. Нет блюд в этой категории
+    {% endif %}
+{% endblock %}
