@@ -1,10 +1,11 @@
+from django.contrib.auth.models import User
 from django.db.models import QuerySet
 from django.shortcuts import render
 
 from .charts.meal_statistic_char import get_char_for_meal
 from .models import Meal
 from django.utils import timezone
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 
 
 def menu(request: HttpRequest):

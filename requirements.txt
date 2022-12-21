@@ -6,3 +6,4 @@ python-dotenv==0.21.0
 sqlparse==0.4.3
 
 plotly~=5.11.0
+six~=1.16.0
