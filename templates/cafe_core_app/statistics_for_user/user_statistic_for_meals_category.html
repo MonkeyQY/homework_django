@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block tittle %}
+    Statistics for users
+{% endblock %}
+
+{% block content %}
+
+    <div class="form">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label>
+                <input type="number" value="Select count Users to show", name="count_user">
+                <br>
+                <select name="meals_category">
+                    {% for v in meals %}
+                        <option value="{{ v }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <br>
+            <input type="submit" value="Show statistics">
+        </form>
+    </div>
+    {% if category is not None %}
+        <div class="show_statistic">
+
+            <h3>{{ category }}</h3>
+            {% for k, v in statistics.items %}
+                <p>{{ k }} - {{ v.user }}: {{ v.clicks }}</p>
+            {% endfor %}
+
+        </div>
+    {% endif %}
+
+{% endblock %}

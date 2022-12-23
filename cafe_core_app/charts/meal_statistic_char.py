@@ -44,6 +44,7 @@ def filter_date(meal, period: str) -> tuple[int, int]:
         case "hour":
             number = meal.click_date.hour
             count = meal.meal.mealclick_set.filter(click_date__hour=number, click_date__day=today.day).count()
+
         case "month":
             number = meal.click_date.month
             count = meal.meal.mealclick_set.filter(click_date__month=number, click_date__year=today.year).count()
@@ -52,10 +53,10 @@ def filter_date(meal, period: str) -> tuple[int, int]:
             number = meal.click_date.year
             count = meal.meal.mealclick_set.filter(click_date__year=number).count()
             number = number - today.year + 11
+
         case _:
             number = meal.click_date.day
             count = meal.meal.mealclick_set.filter(click_date__day=number, click_date__month=today.month).count()
-
     return number, count
 
 
@@ -65,14 +66,17 @@ def select_period(period: str):
             list_of_dates = [i for i in range(0, 24)]
             list_of_clicks = [0 for i in range(0, 24)]
             return list_of_dates, list_of_clicks
+
         case "month":
             list_of_dates = [i for i in range(1, 13)]
             list_of_clicks = [0 for i in range(1, 13)]
             return list_of_dates, list_of_clicks
+
         case "year":
             list_of_dates = [i for i in range(today.year - 10, today.year + 1)]
             list_of_clicks = [0 for i in range(today.year - 10, today.year + 1)]
             return list_of_dates, list_of_clicks
+
         case _:
             list_of_dates = [i for i in range(1, 32)]
             list_of_clicks = [0 for i in range(1, 32)]

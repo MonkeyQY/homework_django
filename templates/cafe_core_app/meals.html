@@ -7,10 +7,11 @@
         {% for meal in meals %}
             <h2>
                 <a
-                        href="{% url 'menu:meal' meal.id %}">{{ meal.name }}
+                        href="{% url 'cafe_core_app_1:meal' meal.id %}">{{ meal.name }}
                 </a>
+                <br>
                 <a
-                        href="{% url 'menu:statistic_for_meal' meal.id %}">Statistic for {{ meal.name }}
+                        href="{% url 'cafe_core_app_1:statistic_for_meal' meal.id %}">Statistic for {{ meal.name }}
                 </a>
             </h2>
         {% endfor %}

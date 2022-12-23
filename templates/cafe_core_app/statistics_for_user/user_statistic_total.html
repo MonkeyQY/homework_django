@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block tittle %}
+    Statistics for users
+{% endblock %}
+
+{% block content %}
+
+    {% for k, meal in users.items %}
+        <p>{{ k }}- Пользователь - {{ meal.user }}, количество кликов
+            - {{ meal.clicks }} </p>
+    {% endfor %}
+
+{% endblock %}

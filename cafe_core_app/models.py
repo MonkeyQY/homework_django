@@ -22,4 +22,5 @@ class Meal(models.Model):
 
 class MealClick(models.Model):
     meal = models.ForeignKey(Meal, on_delete=models.DO_NOTHING)
+    clicked_user = models.ForeignKey('auth.User', on_delete=models.CASCADE, default=None, null=True)
     click_date = models.DateTimeField('Дата клика')
